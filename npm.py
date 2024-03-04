@@ -4,7 +4,7 @@ import inspect
 import sys
 import ast
 
-class RemoteNPMCommands(object):
+class RemoteNPM(object):
     def __init__(self, remote_host, remote_user, remote_password):
         self.remote_host = remote_host
         self.remote_user = remote_user
