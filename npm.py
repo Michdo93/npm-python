@@ -31,49 +31,56 @@ class NPM(RemoteNPMCommands):
         command = ['npm', 'access', 'public']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_restricted(package=None, check=True):
         command = ['npm', 'access', 'restricted']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_grant(permission, team, package=None, check=True):
         command = ['npm', 'access', 'grant', permission, team]
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_revoke(team, package=None, check=True):
         command = ['npm', 'access', 'revoke', team]
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_2fa_required(package=None, check=True):
         command = ['npm', 'access', '2fa-required']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_2fa_not_required(package=None, check=True):
         command = ['npm', 'access', '2fa-not-required']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_ls_packages(identifier=None, check=True):
         command = ['npm', 'access', 'ls-packages']
         if identifier:
             command.append(identifier)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_ls_collaborators(package=None, user=None, check=True):
@@ -82,14 +89,16 @@ class NPM(RemoteNPMCommands):
             command.append(package)
         if user:
             command.append(user)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def access_edit(package=None, check=True):
         command = ['npm', 'access', 'edit']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def adduser(registry=None, scope=None, always_auth=False, auth_type=None, check=True):
@@ -104,7 +113,8 @@ class NPM(RemoteNPMCommands):
         if auth_type:
             command.extend(['--auth-type', auth_type])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def audit(output_format=None, audit_level=None, production=False, only=None, check=True):
@@ -119,7 +129,8 @@ class NPM(RemoteNPMCommands):
         if only:
             command.extend(['--only', only])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def audit_fix(force=False, package_lock_only=False, dry_run=False, check=True):
@@ -132,7 +143,8 @@ class NPM(RemoteNPMCommands):
         if dry_run:
             command.append('--dry-run')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def bin(global_install=False, check=True):
@@ -140,7 +152,8 @@ class NPM(RemoteNPMCommands):
         if global_install:
             command.append('-g')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def bugs(package_name=None, check=True):
@@ -148,7 +161,8 @@ class NPM(RemoteNPMCommands):
         if package_name:
             command.append(package_name)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def build(package_folder=None, check=True):
@@ -156,61 +170,72 @@ class NPM(RemoteNPMCommands):
         if package_folder:
             command.append(package_folder)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_add_tarball_file(tarball_file, check=True):
         command = ['npm', 'cache', 'add', tarball_file]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_add_folder(folder, check=True):
         command = ['npm', 'cache', 'add', folder]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_add_tarball_url(tarball_url, check=True):
         command = ['npm', 'cache', 'add', tarball_url]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_add_package(name, version, check=True):
         command = ['npm', 'cache', 'add', '{}@{}'.format(name, version)]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_clean(path=None, check=True):
         command = ['npm', 'cache', 'clean']
         if path:
             command.append(path)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def cache_verify(check=True):
         command = ['npm', 'cache', 'verify']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def ci(check=True):
         command = ['npm', 'ci']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def config_set(key, value, global_install=False, check=True):
         command = ['npm', 'config', 'set', key, value]
         if global_install:
             command.append('-g')
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def config_get(key, check=True):
         command = ['npm', 'config', 'get', key]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def config_delete(key, check=True):
         command = ['npm', 'config', 'delete', key]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def config_list(long_format=False, json_output=False, check=True):
@@ -219,80 +244,94 @@ class NPM(RemoteNPMCommands):
             command.append('-l')
         if json_output:
             command.append('--json')
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def config_edit(check=True):
         command = ['npm', 'config', 'edit']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def npm_get(key, check=True):
         command = ['npm', 'get', key]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def npm_set(key, value, global_install=False, check=True):
         command = ['npm', 'set', key, value]
         if global_install:
             command.append('-g')
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def dedupe(check=True):
         command = ['npm', 'dedupe']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def ddp(check=True):
         command = ['npm', 'ddp']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def deprecate(package, version, message, check=True):
         command = ['npm', 'deprecate', '{}@{}'.format(package, version), message]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def dist_tag_add(package, version, tag, check=True):
         command = ['npm', 'dist-tag', 'add', '{}@{}'.format(package, version), tag]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def dist_tag_rm(package, tag, check=True):
         command = ['npm', 'dist-tag', 'rm', package, tag]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def dist_tag_ls(package=None, check=True):
         command = ['npm', 'dist-tag', 'ls']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def docs(packages=None, check=True):
         command = ['npm', 'docs']
         if packages:
             command.extend(packages)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def home(packages=None, check=True):
         command = ['npm', 'home']
         if packages:
             command.extend(packages)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def doctor(check=True):
         command = ['npm', 'doctor']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def edit(package, check=True):
         command = ['npm', 'edit', package]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def explore(package, command_args=None, check=True):
@@ -300,50 +339,58 @@ class NPM(RemoteNPMCommands):
         if command_args:
             command.append('--')
             command.extend(command_args)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def fund(package=None, check=True):
         command = ['npm', 'fund']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def npm_help(term, terms=None, check=True):
         command = ['npm', 'help', term]
         if terms:
             command.extend(terms)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def help_search(text, check=True):
         command = ['npm', 'help-search', text]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def hook_ls(package=None, check=True):
         command = ['npm', 'hook', 'ls']
         if package:
             command.append(package)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def hook_add(entity, url, secret, check=True):
         command = ['npm', 'hook', 'add', entity, url, secret]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def hook_update(hook_id, url, secret=None, check=True):
         command = ['npm', 'hook', 'update', hook_id, url]
         if secret:
             command.append(secret)
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def hook_rm(hook_id, check=True):
         command = ['npm', 'hook', 'rm', hook_id]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def init(force=False, scope=None, check=True):
@@ -352,17 +399,20 @@ class NPM(RemoteNPMCommands):
             command.append('--force')
         if scope:
             command.extend(['--scope', scope])
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def init_scope(create_scope, check=True):
         command = ['npx', '{}/create'.format(create_scope)]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def init_name(create_name, check=True):
         command = ['npx', 'create-{}'.format(create_name)]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def install(package=None, tag=None, version=None, version_range=None, alias=None, git_alias=None,
@@ -391,12 +441,14 @@ class NPM(RemoteNPMCommands):
         elif version_range:
             command.append('@{}'.format(version_range))
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def install_ci_test(check=True):
         command = ['npm', 'install-ci-test']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def install_test(package=None, tag=None, version=None, version_range=None, tarball_file=None, tarball_url=None, folder=None, check=True):
@@ -419,7 +471,8 @@ class NPM(RemoteNPMCommands):
         elif folder:
             command.append(folder)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def link(package=None, version=None, scope=None, check=True):
@@ -434,7 +487,8 @@ class NPM(RemoteNPMCommands):
             if version:
                 command.append('@{}'.format(version))
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def logout(registry=None, scope=None, check=True):
@@ -446,7 +500,8 @@ class NPM(RemoteNPMCommands):
         if scope:
             command.extend(['--scope', scope])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def ls(packages=None, check=True):
@@ -455,17 +510,20 @@ class NPM(RemoteNPMCommands):
         if packages:
             command.extend(packages)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def org_set(orgname, username, role, check=True):
         command = ['npm', 'org', 'set', orgname, username, role]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def org_rm(orgname, username, check=True):
         command = ['npm', 'org', 'rm', orgname, username]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def org_ls(orgname, username=None, check=True):
@@ -474,7 +532,8 @@ class NPM(RemoteNPMCommands):
         if username:
             command.append(username)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def outdated(packages=None, check=True):
@@ -483,7 +542,8 @@ class NPM(RemoteNPMCommands):
         if packages:
             command.extend(packages)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def owner_add(user, package, scope=None, check=True):
@@ -494,7 +554,8 @@ class NPM(RemoteNPMCommands):
         else:
             command.append(package)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def owner_rm(user, package, scope=None, check=True):
@@ -505,7 +566,8 @@ class NPM(RemoteNPMCommands):
         else:
             command.append(package)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def owner_ls(package, scope=None, check=True):
@@ -516,7 +578,8 @@ class NPM(RemoteNPMCommands):
         else:
             command.append(package)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def pack(packages=None, dry_run=False, check=True):
@@ -528,7 +591,8 @@ class NPM(RemoteNPMCommands):
         if dry_run:
             command.append('--dry-run')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def ping(registry=None, check=True):
@@ -537,14 +601,16 @@ class NPM(RemoteNPMCommands):
         if registry:
             command.extend(['--registry', registry])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def prefix(global_install=False, check=True):
         command = ['npm', 'prefix']
         if global_install:
             command.append('-g')
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def profile_get(parseable=False, json_output=False, property=None, check=True):
@@ -558,7 +624,8 @@ class NPM(RemoteNPMCommands):
         if property:
             command.append(property)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def profile_set(property, value, parseable=False, json_output=False, check=True):
@@ -570,12 +637,14 @@ class NPM(RemoteNPMCommands):
             command.append('--parseable')
 
         command.extend([property, value])
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def profile_set_password(check=True):
         command = ['npm', 'profile', 'set', 'password']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def profile_enable_2fa(mode=None, check=True):
@@ -584,12 +653,14 @@ class NPM(RemoteNPMCommands):
         if mode:
             command.append(mode)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def profile_disable_2fa(check=True):
         command = ['npm', 'profile', 'disable-2fa']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def prune(packages=None, production=False, dry_run=False, json_output=False, check=True):
@@ -607,7 +678,8 @@ class NPM(RemoteNPMCommands):
         if json_output:
             command.append('--json')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def publish(tarball_or_folder=None, tag=None, access=None, otp=None, dry_run=False, check=True):
@@ -628,7 +700,8 @@ class NPM(RemoteNPMCommands):
         if dry_run:
             command.append('--dry-run')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def rebuild(scopes_and_names=None, check=True):
@@ -637,7 +710,8 @@ class NPM(RemoteNPMCommands):
         if scopes_and_names:
             command.extend(scopes_and_names)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def repo(package=None, check=True):
@@ -646,7 +720,8 @@ class NPM(RemoteNPMCommands):
         if package:
             command.append(package)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def restart(args=None, check=True):
@@ -656,7 +731,8 @@ class NPM(RemoteNPMCommands):
             command.append('--')
             command.extend(args)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def root(global_install=False, check=True):
@@ -665,7 +741,8 @@ class NPM(RemoteNPMCommands):
         if global_install:
             command.append('-g')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def run_script(command, silent=False, args=None, check=True):
@@ -678,7 +755,8 @@ class NPM(RemoteNPMCommands):
             npm_command.append('--')
             npm_command.extend(args)
 
-        subprocess.run(npm_command, check=check)
+        result = subprocess.run(npm_command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def search(search_terms=None, long_format=False, json_output=False, parseable=False, no_description=False, check=True):
@@ -699,12 +777,14 @@ class NPM(RemoteNPMCommands):
         if search_terms:
             command.extend(search_terms)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def shrinkwrap(check=True):
         command = ['npm', 'shrinkwrap']
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def star(packages=None, check=True):
@@ -713,7 +793,8 @@ class NPM(RemoteNPMCommands):
         if packages:
             command.extend(packages)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def unstar(packages=None, check=True):
@@ -722,7 +803,8 @@ class NPM(RemoteNPMCommands):
         if packages:
             command.extend(packages)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def stars(user=None, check=True):
@@ -731,7 +813,8 @@ class NPM(RemoteNPMCommands):
         if user:
             command.append(user)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def start(args=None, check=True):
@@ -741,7 +824,8 @@ class NPM(RemoteNPMCommands):
             command.append('--')
             command.extend(args)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def stop(args=None, check=True):
@@ -751,27 +835,32 @@ class NPM(RemoteNPMCommands):
             command.append('--')
             command.extend(args)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_create(scope_team, check=True):
         command = ['npm', 'team', 'create', scope_team]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_destroy(scope_team, check=True):
         command = ['npm', 'team', 'destroy', scope_team]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_add(scope_team, user, check=True):
         command = ['npm', 'team', 'add', scope_team, user]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_rm(scope_team, user, check=True):
         command = ['npm', 'team', 'rm', scope_team, user]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_ls(scope_team=None, check=True):
@@ -780,12 +869,14 @@ class NPM(RemoteNPMCommands):
         if scope_team:
             command.append(scope_team)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def team_edit(scope_team, check=True):
         command = ['npm', 'team', 'edit', scope_team]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def test(args=None, check=True):
@@ -795,7 +886,8 @@ class NPM(RemoteNPMCommands):
             command.append('--')
             command.extend(args)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def token_list(json_output=False, parseable=False, check=True):
@@ -806,7 +898,8 @@ class NPM(RemoteNPMCommands):
         elif parseable:
             command.append('--parseable')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def token_create(read_only=False, cidr=None, check=True):
@@ -818,12 +911,14 @@ class NPM(RemoteNPMCommands):
         if cidr:
             command.extend(['--cidr', cidr])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def token_revoke(id_or_token, check=True):
         command = ['npm', 'token', 'revoke', id_or_token]
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def uninstall(packages, save=False, save_dev=False, save_optional=False, no_save=False, check=True):
@@ -841,7 +936,8 @@ class NPM(RemoteNPMCommands):
         elif no_save:
             command.append('--no-save')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def unpublish(package, version=None, force=False, check=True):
@@ -856,7 +952,8 @@ class NPM(RemoteNPMCommands):
             if force:
                 command.append('--force')
 
-            subprocess.run(command, check=check)
+            result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def update(packages=None, global_install=False, check=True):
@@ -868,7 +965,8 @@ class NPM(RemoteNPMCommands):
         if packages:
             command.extend(packages)
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def version(new_version=None, release_type=None, preid=None, from_git=False, check=True):
@@ -885,7 +983,8 @@ class NPM(RemoteNPMCommands):
         if from_git:
             command.append('from-git')
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def view(package, version=None, field=None, check=True):
@@ -900,7 +999,8 @@ class NPM(RemoteNPMCommands):
             if field:
                 command.append(field)
 
-            subprocess.run(command, check=check)
+            result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
 
     @staticmethod
     def whoami(registry=None, check=True):
@@ -909,4 +1009,5 @@ class NPM(RemoteNPMCommands):
         if registry:
             command.extend(['--registry', registry])
 
-        subprocess.run(command, check=check)
+        result = subprocess.run(command, check=check)
+        return result.stdout.decode('utf-8') if not check else None
