@@ -35,7 +35,7 @@ from npm import NPM
 
 ### Output via the terminal
 
-Each function has a `check` parameter which is by default `True`. This means that
+Each function has a `shell_check` parameter which is by default `True`. This means that
 
 ```
 NPM.start(args=["--port", "3000"])
@@ -44,26 +44,26 @@ NPM.start(args=["--port", "3000"])
 is equivalent to
 
 ```
-NPM.start(args=["--port", "3000"], check=True)
+NPM.start(args=["--port", "3000"], shell_check=True)
 ```
 
-This means that when the Python script is executed, the output of subprocess appears in the command line. There is virtually no difference to when I have entered the corresponding command directly in the command line instead of my Python programme. If you want more complex Python scripts for automation, you want to pass `check=False` to the function and save the return value of the function in a variable. You can of course check this for possible errors or whether everything has worked and can then continue your programme based on this (and possibly execute further npm commands).
+This means that when the Python script is executed, the output of subprocess appears in the command line. There is virtually no difference to when I have entered the corresponding command directly in the command line instead of my Python programme. If you want more complex Python scripts for automation, you want to pass `shell_check=False` to the function and save the return value of the function in a variable. You can of course check this for possible errors or whether everything has worked and can then continue your programme based on this (and possibly execute further npm commands).
 
 ### Remote execution (SSH)
 
 To execute `SSH`, `paramiko` is used. SSH` can be executed here for every function. An example looks like this:
 
 ```
-from npm import RemoteNPMCommands
+from npm import RemoteNPM
 
-remote_npm = RemoteNPMCommands(remote_host='your_remote_host', remote_user='your_username', remote_password='your_password')
-remote_npm.access_public(package='mypackage', check=True)
+Remote = RemoteNPM(remote_host='your_remote_host', remote_user='your_username', remote_password='your_password')
+Remote.access_public(package='mypackage', shell_check=True)
 ```
 
 the local equivalent looks like this:
 
 ```
-NPM.access_public(package='mypackage', check=True)
+NPM.access_public(package='mypackage', shell_check=True)
 ```
 
 ### npm access
