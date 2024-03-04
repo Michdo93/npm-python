@@ -54,7 +54,9 @@ This means that when the Python script is executed, the output of subprocess app
 To execute `SSH`, `paramiko` is used. SSH` can be executed here for every function. An example looks like this:
 
 ```
-remote_npm = NPMRemote(remote_host='your_remote_host', remote_user='your_username', remote_password='your_password')
+from npm import RemoteNPMCommands
+
+remote_npm = RemoteNPMCommands(remote_host='your_remote_host', remote_user='your_username', remote_password='your_password')
 remote_npm.access_public(package='mypackage', check=True)
 ```
 
