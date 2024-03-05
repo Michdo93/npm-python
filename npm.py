@@ -98,7 +98,7 @@ if result:
         else:
             return_value = str(result_stdout)
         
-        #ssh.exec_command("echo {} | rm remote_npm.py".format(self.remote_password) if sudo else "rm remote_npm.py")
+        ssh.exec_command("echo {} | rm remote_npm.py".format(self.remote_password) if sudo else "rm remote_npm.py")
         ssh.close()
         return str(return_value)
     
